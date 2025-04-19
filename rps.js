@@ -48,12 +48,14 @@ function check_valid_string(b){
         else if (b===null) return null;
        else// if isNaN is flase, it means the value is a number, which gives should ask the user to only enter rock,paper,scissor 
        {
-        console.log("you entered wrong value")
-        let b = prompt("enter only rock paper scissor")
-        if (b==null) return null;
-        let c = b.toLowerCase();
-        console.log("value of lower case c is : ",c)
-        result = check_valid_string(c)
+        alert ("You entered wrong value, enter ONLY rock paper scissor");
+        result = getHumanChoice()
+        console.log("you entered wrong value, enter only rock paper scissor")
+        // let b = prompt("enter only rock paper scissor")
+        // if (b==null) return null;
+        // let c = b.toLowerCase();
+        // console.log("value of lower case c is : ",c)
+        // result = check_valid_string(c)
        }
     return result;
 
@@ -107,7 +109,7 @@ function playRound() {
 
 
 
-GameResult= playRound()
+GameResult = playRound()
 if (HumanScore==ComputerScore) GameResult="Round Tie"
     else if (HumanScore>ComputerScore) GameResult= ("Human wins this round ")
     else GameResult=("computer wins this round")
