@@ -3,12 +3,20 @@ let HumanScore = 0;
 let ComputerScore = 0;
 let tie = 0;
 let GameResult = "";
+let gameCount=0;
+let displayGameCount
+let displayOutput
 
 document.querySelector(".play-again").addEventListener("click", ()=>{
     HumanScore = 0;
     ComputerScore = 0;
     tie = 0;
     GameResult = "";
+    gameCount=0;
+    if (displayOutput.contains(displayGameCount)) {
+        displayOutput.removeChild(displayGameCount);
+      }
+    console.log("remove the child")
     updateScore()
 } )
 
@@ -81,6 +89,7 @@ function playRound(Human)
   Computer = getComputerChoice();
   console.log("computer choice is : ", Computer);
   GameResult = beginGame(Human, Computer);
+  gameCount++
   if (GameResult == "tie") {
     tie++;
   } else if (GameResult == "Computer wins this round") ComputerScore++;
@@ -120,7 +129,8 @@ submit.addEventListener("click", () =>
     function updateScore()
     {   
         console.log(GameResult)
-        document.querySelector(".output").textContent =
+        displayOutput = document.querySelector(".output")
+        displayOutput.textContent =
         GameResult +
         "\n\nOverall number of tie's is " +
         tie +
@@ -129,6 +139,22 @@ submit.addEventListener("click", () =>
         " \nOverall Computer score is " +
         ComputerScore;
         document.querySelector(".output").style.whiteSpace = "pre-line";
+
+        if (gameCount==5) 
+            {
+                displayGameCount = document.createElement("p")
+                displayGameCount.textContent = "The overall game winner is: "+  
+                    ( HumanScore > ComputerScore? "Human" :
+                        ComputerScore > HumanScore? "Computer": "TIE"
+                    )
+                displayOutput.appendChild(displayGameCount)
+                
+            }   
+        else if(gameCount==6) 
+            {
+                const clickEvent= new Event("click");
+                document.querySelector(".play-again").dispatchEvent(clickEvent)
+            }
     }
 
 
