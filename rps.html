@@ -4,13 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      body 
+      {
+        background-color: #000000; /* black background */
+        color: #ffffff; /* white text */
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+      </style>
   </head>
   <body>
     <div style="text-align: center">
       <h1>Rock Paper Scissors</h1>
-      <input class="rps-input" placeholder="enter rps" />
+      <p>(game resets after 5 rounds)</p>
+      <div style="margin: 10px;">
+        <input class="rps-input" placeholder="enter rps" />
+        <button class="submit">Submit</button>
+      </div>
+      
+      <div class="rps-buttons">
+        <button class="rock-button">Rock</button>
+        <button class="paper-button">Paper</button>
+        <button class="scissor-button">Scissor</button>
+      </div>
       <p class="output">Result is : </p>
-      <button onclick="playRound()">Play again</button>
+      <button class="play-again">Play again</button>
     </div>
 
     <script type="text/javascript" src="/RockPaperScissor/rps.js"></script>
